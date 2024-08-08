@@ -11,22 +11,25 @@
 
 <body>
     <h1>Welcome to My Library</h1>
-    <form>
-        <h2>Enter New Book Information</h2>
-        <label for="title">Book Title</label>
-        <input type="text" id="title" name="title" required>
-        <label for="author">Author</label>
-        <input type="text" id="author" name="author" required>
-        <label for="pages">Pages</label>
-        <input type="number" id="pages" name="pages" required>
-        <label for="read">Read</label>
-        <select id="read" name="read">
-            <option value="read" selected>read</option>
-            <option value="not read">not read</option>
-        </select>
-        <button type="submit">Add Book</button>
-        <button type="button">Cancel</button>
-    </form>
+    <dialog>
+        <form>
+            <h2>Enter New Book Information</h2>
+            <label for="title">Book Title</label>
+            <input type="text" id="title" name="title" required>
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required>
+            <label for="pages">Pages</label>
+            <input type="number" id="pages" name="pages" required>
+            <label for="read">Read</label>
+            <select id="read" name="read">
+                <option value="read" selected>read</option>
+                <option value="not read">not read</option>
+            </select>
+            <button type="submit">Add Book</button>
+            <button type="button">Cancel</button>
+        </form>
+    </dialog>
+    <button type="button">Add a New Book</button>
     <div class="container"></div>
 </body>
 
