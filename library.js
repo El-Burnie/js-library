@@ -1,3 +1,7 @@
+const newBookModal = document.querySelector("dialog");
+const newBookModalButton = document.getElementById("newBookModal");
+const closeModalButton = document.getElementById("closeModal");
+const addNewBookButton = document.getElementById("addNewBook");
 const container = document.querySelector(".container");
 
 const myLibrary = [];
@@ -66,5 +70,13 @@ function displayLibrary() {
         container.appendChild(book.convertToBookCard());
     }
 }
+
+newBookModalButton.addEventListener("click", () => {
+    newBookModal.showModal();
+});
+
+closeModalButton.addEventListener("click", () => {
+    newBookModal.close();
+});
 
 displayLibrary();
