@@ -57,6 +57,15 @@ Book.prototype.convertToBookCard = function(index) {
     });
     bookCard.appendChild(deleteButton);
 
+    const readToggleButton = document.createElement("button");
+    readToggleButton.type = "button";
+    readToggleButton.textContent = "Toggle Read";
+    readToggleButton.addEventListener("click", () => {
+        myLibrary[index].read = !myLibrary[index].read;
+        displayLibrary();
+    });
+    bookCard.appendChild(readToggleButton);
+
     return bookCard;
 };
 
