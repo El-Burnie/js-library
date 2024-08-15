@@ -1,7 +1,7 @@
 const newBookModal = document.querySelector("dialog");
 const newBookModalButton = document.getElementById("newBookModal");
 const closeModalButton = document.getElementById("closeModal");
-const addNewBookButton = document.getElementById("addNewBook");
+const newBookForm = document.querySelector("form");
 const container = document.querySelector(".container");
 
 const myLibrary = [];
@@ -22,6 +22,7 @@ function Book(title, author, pages, read) {
     };
 }
 
+// creates and returns a DOM element that displays all the Book values
 Book.prototype.convertToBookCard = function() {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
@@ -52,6 +53,7 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+// Used to populate the page for easier styling
 const testBook1 = new Book("The Giving Tree", "Shel Silverstein", 64, true);
 const testBook2 = new Book("The Way of Kings", "Brandon Sanderson", 1280, false);
 const testBook3 = new Book("Dune", "Frank Herbert", 704, true);
@@ -77,6 +79,18 @@ newBookModalButton.addEventListener("click", () => {
 
 closeModalButton.addEventListener("click", () => {
     newBookModal.close();
+});
+
+// Creates a new book with form data, displays it and resets the form
+newBookForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const inputs = newBookForm.elements;
+    let read = (inputs["read"].value === "read")
+    let newBook = new Book(inputs["title"].value, inputs["author"].value, inputs["pages"].value, read)
+    addBookToLibrary(newBook);
+    newBookModal.close();
+    newBookForm.reset();
+    displayLibrary();
 });
 
 displayLibrary();
