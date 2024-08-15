@@ -23,7 +23,8 @@ function Book(title, author, pages, read) {
 }
 
 // creates and returns a DOM element that displays all the Book values
-Book.prototype.convertToBookCard = function() {
+// index is required to acess myLibrary to make changes
+Book.prototype.convertToBookCard = function(index) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("book-card");
 
@@ -46,6 +47,16 @@ Book.prototype.convertToBookCard = function() {
         bookRead.textContent = "not read yet"
     }
     bookCard.appendChild(bookRead);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+        myLibrary.splice(index, 1);
+        displayLibrary();
+    });
+    bookCard.appendChild(deleteButton);
+
     return bookCard;
 };
 
@@ -68,8 +79,9 @@ function clearDisplay() {
 
 function displayLibrary() {
     clearDisplay();
-    for (const book of myLibrary) {
-        container.appendChild(book.convertToBookCard());
+    for (let i = 0; i < myLibrary.length; i++){
+        const book = myLibrary[i]
+        container.appendChild(book.convertToBookCard(i));
     }
 }
 
